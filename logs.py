@@ -5,6 +5,7 @@ from google.cloud import logging
 from logging import basicConfig
 from logging import getLogger
 from logging import NOTSET
+from os import getenv, path
 
 # The format for local logs.
 LOGS_FORMAT = ("%(asctime)s "
@@ -15,7 +16,9 @@ LOGS_FORMAT = ("%(asctime)s "
                "%(message)s")
 
 # The path to the log file for local logging.
-LOG_FILE = "/tmp/trump2cash.log"
+
+TEMP_PATH = getenv("TEMP")
+LOG_FILE = path.join(TEMP_PATH, "trump2cash.log")
 
 
 class Logs:
